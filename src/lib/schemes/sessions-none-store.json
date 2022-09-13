@@ -1,0 +1,14 @@
+{
+    "type": "object",
+    "properties": {
+        "type": {
+            "type": "string",
+            "env": "TEMPLATE_SESSIONS_STORE_TYPE",
+            "const": "none"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "type"
+    ]
+}

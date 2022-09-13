@@ -1,0 +1,94 @@
+[logger]                    # настройка логгера
+    name = ""               # имя логгера
+    enable = true           # активация
+    level = "error"         # уровень (fatal, error, warn, info, debug, trace)
+    timestamp = "none"      # вывод времени full, short, unix и none
+
+[api]
+    enable = false              # активация API сервера
+    logging = false             # логирование запросов (ключ logger.level = "debug" или ниже)
+    hostname = "0.0.0.0"        # хост          
+    port = 3001                 # порт
+    backlog = 511               # очередь баклога
+    prefix = "/api"             # префикс
+    connection_timeout = 0      # таймаут сервера в миллисекундах
+    keep_alive_timeout = 5000   # таймаут keep-alive сервера в миллисекундах
+    body_limit = "1mb"          # максимальный размер тела запроса (b, kb, mb)
+    trust_proxy = false         # доверие proxy заголовку
+
+[connector]                         # настройка подключения бота
+    bot_token = "xxxxxxxx"          # токен бота
+    type = "polling"                # тип бота, webhook или polling
+    drop_pending_updates = true     # сброс обновлений
+    allowed_updates = [             # права бота
+        "callback_query",
+        "channel_post",
+        "chat_member",
+        "chosen_inline_result",
+        "edited_channel_post",
+        "edited_message",
+        "inline_query",
+        "message",
+        "my_chat_member",
+        "pre_checkout_query",
+        "poll_answer",
+        "poll",
+        "shipping_query",
+        "chat_join_request"
+    ]
+
+#[connector]                         # настройка подключения бота
+#    bot_token = "xxxxxxxx"          # токен бота
+#    type = "polling"                # тип бота, webhook или polling
+#    drop_pending_updates = true     # сброс обновлений
+#    allowed_updates = [             # права бота
+#        "callback_query",
+#        "channel_post",
+#        "chat_member",
+#        "chosen_inline_result",
+#        "edited_channel_post",
+#        "edited_message",
+#        "inline_query",
+#        "message",
+#        "my_chat_member",
+#        "pre_checkout_query",
+#        "poll_answer",
+#        "poll",
+#        "shipping_query",
+#        "chat_join_request"
+#    ]
+#    domain = ""                 # домен
+#    hostname = "0.0.0.0"        # хост          
+#    port = 4001                 # порт
+#    prefix = "/telegram"        # префикс
+#    max_connections = 40        # максимальный предел подключений
+
+
+[i18n]              # настройка языка
+    default = "ru"  # язык по умолчанию
+
+[sessions]              # настройка сессии
+    ttl = "10m"         # время жизни сессии
+    [sessions.store]    # настройка хранилища сессий
+        type = "none"   # тип хранилища, none или mongodb
+
+#[sessions]                  # настройка сессии
+#    ttl = "10m"             # время жизни сессии
+#    [sessions.store]        # настройка хранилища сессий
+#        type = "mongodb"    # тип хранилища, none или mongodb
+#        host = "localhost"                  # хост
+#        port = 27017                        # порт
+#        db = "telegram"                     # база данных
+#        reconnect_interval = "10s"          # интервал переподключения
+#        buffer_commands = true              # буферизация mongodb
+#        max_pool_size = 100                 # максимальное количество соединений
+#        min_pool_size = 0                   # минимальное количество соединений
+#        server_selection_timeout = "30s"    # время выбора поиска сервера
+#        heartbeat_frequency = "30s"         # интервал сердцебиения
+#        auto_index = true                   # автоматическое создание индексов
+#        socket_timeout = "30s"              # максимальное время подключения
+#        family = 4                          # семейство сети 4 или 6
+#        auto_create = false                 # автоматическое создания коллекции 
+#        [sessions.store.auth]               # авторизация
+#            user = ""                       # пользователь
+#            password = ""                   # пароль

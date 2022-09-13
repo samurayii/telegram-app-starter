@@ -1,2 +1,3 @@
 # telegram-app-starter
-template for start
+
+install: `npm install -g npm && npm install`

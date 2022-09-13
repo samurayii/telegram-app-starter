@@ -1,0 +1,131 @@
+{
+    "type": "object",
+    "properties": {
+        "type": {
+            "type": "string",
+            "env": "TEMPLATE_SESSIONS_STORE_TYPE",
+            "const": "mongodb"
+        },
+        "host": {
+            "type": "string",
+            "default": "localhost",
+            "minLength": 1,
+            "maxLength": 128,
+            "env": "TEMPLATE_SESSIONS_STORE_HOST"
+        },
+        "port": {
+            "type": "integer",
+            "default": 27017,
+            "env": "TEMPLATE_SESSIONS_STORE_PORT",
+            "minimum": 1,
+            "maximum": 65535
+        },
+        "db": {
+            "type": "string",
+            "default": "telegram",
+            "minLength": 1,
+            "maxLength": 128,
+            "env": "TEMPLATE_SESSIONS_STORE_DB"
+        },
+        "auth": {
+            "type": "object",
+            "default": {},
+            "env": "TEMPLATE_SESSIONS_STORE_AUTH",
+            "properties": {
+                "user": {
+                    "type": "string",
+                    "env": "TEMPLATE_SESSIONS_STORE_AUTH_USER",
+                    "default": "",
+                    "minLength": 0,
+                    "maxLength": 64
+                },
+                "password": {
+                    "type": "string",
+                    "env": "TEMPLATE_SESSIONS_STORE_AUTH_PASSWORD",
+                    "default": "",
+                    "minLength": 0,
+                    "maxLength": 128
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "user",
+                "password"
+            ]
+        },
+        "buffer_commands": {
+            "type": "boolean",
+            "default": true,
+            "env": "TEMPLATE_SESSIONS_STORE_BUFFER_COMMANDS"
+        },
+        "max_pool_size": {
+            "type": "integer",
+            "default": 100,
+            "env": "TEMPLATE_SESSIONS_STORE_MAX_POOL_SIZE",
+            "minimum": 1
+        },
+        "min_pool_size": {
+            "type": "integer",
+            "default": 0,
+            "env": "TEMPLATE_SESSIONS_STORE_MIN_POOL_SIZE",
+            "minimum": 0
+        },
+        "server_selection_timeout": {
+            "type": "string",
+            "default": "30s",
+            "env": "TEMPLATE_SESSIONS_STORE_SERVER_SELECTION_TIMEOUT",
+            "pattern": "^[0-9]{1}[smhd]{0,1}[0-9smhd]*[mhsd]{1}"
+        },
+        "heartbeat_frequency": {
+            "type": "string",
+            "default": "30s",
+            "env": "TEMPLATE_SESSIONS_STORE_HEARTBEAT_FREQUENCY",
+            "pattern": "^[0-9]{1}[smhd]{0,1}[0-9smhd]*[mhsd]{1}"
+        },
+        "auto_index": {
+            "type": "boolean",
+            "default": true,
+            "env": "TEMPLATE_SESSIONS_STORE_AUTO_INDEX"
+        },
+        "socket_timeout": {
+            "type": "string",
+            "default": "30s",
+            "env": "TEMPLATE_SESSIONS_STORE_SOCKET_TIMEOUT",
+            "pattern": "^[0-9]{1}[smhd]{0,1}[0-9smhd]*[mhsd]{1}"
+        },
+        "family": {
+            "type": "integer",
+            "default": 4,
+            "env": "TEMPLATE_SESSIONS_STORE_FAMILY",
+            "enum": [4,6]
+        },
+        "auto_create": {
+            "type": "boolean",
+            "default": false,
+            "env": "TEMPLATE_SESSIONS_STORE_AUTO_CREATE"
+        },
+        "reconnect_interval": {
+            "type": "string",
+            "default": "10s",
+            "pattern": "^[0-9]{1}[smhd]{0,1}[0-9smhd]*[mhsd]{1}"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "type",
+        "host",
+        "port",
+        "db",
+        "auth",
+        "buffer_commands",
+        "max_pool_size",
+        "min_pool_size",
+        "server_selection_timeout",
+        "heartbeat_frequency",
+        "auto_index",
+        "socket_timeout",
+        "family",
+        "auto_create",
+        "reconnect_interval"
+    ]
+}

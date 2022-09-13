@@ -1,0 +1,109 @@
+{
+    "type": "object",
+    "properties": {
+        "type": {
+            "type": "string",
+            "const": "webhook"
+        },
+        "bot_token": {
+            "type": "string",
+            "default": "",
+            "env": "TEMPLATE_CONNECTOR_BOT_TOKEN",
+            "minLength": 1,
+            "maxLength": 64
+        },
+        "drop_pending_updates": {
+            "type": "boolean",
+            "default": true,
+            "env": "TEMPLATE_CONNECTOR_DROP_PENDING_UPDATES"
+        },
+        "allowed_updates": {
+            "type": "array",
+            "env": "TEMPLATE_CONNECTOR_ALLOWED_UPDATES",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "callback_query",
+                    "channel_post",
+                    "chat_member",
+                    "chosen_inline_result",
+                    "edited_channel_post",
+                    "edited_message",
+                    "inline_query",
+                    "message",
+                    "my_chat_member",
+                    "pre_checkout_query",
+                    "poll_answer",
+                    "poll",
+                    "shipping_query",
+                    "chat_join_request"
+                ]
+            },
+            "default": [
+                "callback_query",
+                "channel_post",
+                "chat_member",
+                "chosen_inline_result",
+                "edited_channel_post",
+                "edited_message",
+                "inline_query",
+                "message",
+                "my_chat_member",
+                "pre_checkout_query",
+                "poll_answer",
+                "poll",
+                "shipping_query",
+                "chat_join_request"
+            ],
+            "minItems": 0,
+            "uniqueItems": true
+        },
+        "domain": {
+            "type": "string",
+            "default": "",
+            "env": "TEMPLATE_CONNECTOR_DOMAIN",
+            "minLength": 1,
+            "maxLength": 256
+        },
+        "hostname": {
+            "type": "string",
+            "default": "0.0.0.0",
+            "minLength": 1,
+            "maxLength": 64,
+            "env": "TEMPLATE_CONNECTOR_HOSTNAME"
+        },
+        "port": {
+            "type": "integer",
+            "default": 4001,
+            "env": "TEMPLATE_CONNECTOR_PORT",
+            "minimum": 1,
+            "maximum": 65535
+        },
+        "prefix": {
+            "type": "string",
+            "default": "/telegram",
+            "minLength": 0,
+            "maxLength": 32,
+            "env": "TEMPLATE_CONNECTOR_PREFIX",
+            "pattern": "^(\/[a-zA-Z]{1}|)[-a-zA-Z0-9\/]{0,31}$"
+        },
+        "max_connections": {
+            "type": "integer",
+            "default": 40,
+            "env": "TEMPLATE_CONNECTOR_MAX_CONNECTIONS",
+            "minimum": 1
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "type",
+        "bot_token",
+        "drop_pending_updates",
+        "allowed_updates",
+        "domain",
+        "hostname",
+        "port",
+        "prefix",
+        "max_connections"
+    ]
+}
